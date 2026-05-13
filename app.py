@@ -4,6 +4,11 @@ import plotly.express as px
 import random
 import time
 from streamlit_option_menu import option_menu
+from datetime import datetime
+
+st.caption(
+    f"Last Updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+)
 
 # Load Data
 df = pd.read_csv("sample_incidents.csv")
@@ -20,32 +25,125 @@ st.markdown("""
 <style>
 
 .stApp {
-    background-color: #0f172a;
-    color: white;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 45%, #f1f5f9 100%);
+    color: #0f172a;
 }
 
 html, body, [class*="css"] {
-    color: white !important;
+    color: #0f172a !important;
 }
 
-h1, h2, h3, h4, h5, h6, p, label, div, span {
-    color: white !important;
+h1 {
+    color: #0f172a !important;
+    font-size: 46px !important;
+    font-weight: 800 !important;
+}
+
+h2, h3, h4, h5, h6 {
+    color: #1e293b !important;
+    font-weight: 700 !important;
+}
+
+p, label, div, span {
+    color: #0f172a !important;
+}
+
+[data-testid="stMetric"] {
+    background: white;
+    padding: 18px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
 }
 
 [data-testid="stMetricValue"] {
-    color: white !important;
+    color: #0f172a !important;
+    font-size: 30px !important;
+    font-weight: 800 !important;
 }
 
 [data-testid="stMetricLabel"] {
-    color: #cbd5e1 !important;
+    color: #475569 !important;
+    font-weight: 600 !important;
 }
 
 .alert-box {
-    background-color: #7f1d1d;
-    padding: 15px;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
+    background: linear-gradient(135deg, #991b1b, #dc2626);
+    padding: 18px;
+    border-radius: 14px;
+    color: white !important;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(153, 27, 27, 0.25);
+}
+
+.alert-box div, .alert-box span, .alert-box p {
+    color: white !important;
+}
+
+[data-testid="stDataFrame"] {
+    background: white;
+    border-radius: 14px;
+    padding: 8px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.stButton button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white !important;
+    border-radius: 12px;
+    padding: 12px 22px;
+    border: none;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.stButton button:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    color: white !important;
+}
+
+[data-testid="stExpander"] {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+hr {
+    border-color: #cbd5e1;
+}
+    /* Text Input Styling */
+
+.stTextInput input {
+    background-color: white !important;
+    color: #0f172a !important;
+    border: 2px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    font-size: 16px !important;
+}
+
+.stTextInput input:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.2) !important;
+}
+
+/* Option Menu Container */
+
+/* Navigation Menu Cleanup */
+
+ul {
+    background: transparent !important;
+}
+
+.nav-link {
+    border-radius: 12px !important;
+}
+
+section[data-testid="stSidebar"] {
+    display: none;
+}
+
 }
 
 </style>
@@ -96,46 +194,103 @@ st.title("🚨 CrisisShield AI")
 st.caption("AI-Powered Emergency Intelligence Platform")
 
 # Navigation Menu
-selected = option_menu(
-    menu_title=None,
-    options=[
-    "Command Center",
-    "Incident Map",
-    "AI Recommendations",
-    "AI Analyst Assistant",
-    "Executive Summary"
-],
-    icons=[
-    "speedometer2",
-    "geo-alt",
-    "robot",
-    "chat-dots",
-    "clipboard-data"
-],
-    orientation="horizontal"
-)
-
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "🚨 Command Center",
+    "🗺️ Incident Map",
+    "🤖 AI Recommendations",
+    "💬 AI Analyst Assistant",
+    "📋 Executive Summary"
+])
 # COMMAND CENTER
-if selected == "Command Center":
+with tab1:
 
-    st.subheader("🔴 Live Emergency Command Center")
-    st.markdown("### ⚡ Live Alert Simulator")
+    st.markdown("""
+## 🔴 Live Emergency Command Center
+Monitor emergency events, cyber disruptions, infrastructure risks, and public safety alerts from one operational dashboard.
+""")
+    st.markdown("""
+    <div style="
+        background:white;
+        padding:24px;
+        border-radius:18px;
+        border:1px solid #e2e8f0;
+        box-shadow:0 8px 24px rgba(15,23,42,0.08);
+        margin-bottom:20px;
+    ">
+        <h3 style="margin-top:0;">⚡ Live Emergency Alert Simulator</h3>
+        <p style="color:#475569; margin-bottom:16px;">
+        Generate a simulated emergency alert to test AI triage, classification, and response routing.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    if st.button("Generate New Emergency Alert"):
-        alert_types = ["Fire", "Flood", "Cyberattack", "Power Outage", "Hospital Disruption", "Misinformation", "Wildfire", "Earthquake"]
-        alert_locations = ["Atlanta", "Miami", "New York", "Dallas", "Los Angeles", "Chicago", "San Francisco"]
-        alert_sources = ["911", "Weather", "SOC", "Utility", "Social Media", "Satellite", "USGS"]
+    if st.button("🚨 Generate Simulated Emergency Alert"):
+
+        alert_types = [
+            "Cyberattack",
+            "Hospital Disruption",
+            "Wildfire",
+            "Flood",
+            "Power Outage",
+            "Misinformation",
+            "Earthquake"
+        ]
+
+        alert_locations = [
+            "Atlanta",
+            "Miami",
+            "New York",
+            "Dallas",
+            "Los Angeles",
+            "Chicago",
+            "San Francisco"
+        ]
+
+        alert_sources = [
+            "SOC Monitoring",
+            "911 Dispatch",
+            "Weather Feed",
+            "Utility Provider",
+            "Social Media Intelligence",
+            "Satellite Feed",
+            "USGS Alert"
+        ]
 
         new_alert_type = random.choice(alert_types)
         new_location = random.choice(alert_locations)
         new_source = random.choice(alert_sources)
-        new_severity = random.randint(5, 10)
+        new_severity = random.randint(6, 10)
 
-        st.error(f"🚨 NEW ALERT: {new_alert_type} reported in {new_location}")
-        st.write(f"Severity: {new_severity}")
-        st.write(f"Source: {new_source}")
-        st.write("AI Status: Alert classified and routed to response queue.")
+        if new_severity >= 9:
+            new_risk = "Critical"
+        elif new_severity >= 7:
+            new_risk = "High"
+        else:
+            new_risk = "Medium"
 
+        st.markdown(
+            f"""
+            <div style="
+                background:#fff7ed;
+                padding:22px;
+                border-left:6px solid #f97316;
+                border-radius:14px;
+                box-shadow:0 8px 20px rgba(15,23,42,0.08);
+                margin-bottom:20px;
+            ">
+                <h3 style="margin-top:0; color:#9a3412;">
+                🚨 New Emergency Alert Generated
+                </h3>
+                <p><b>Incident Type:</b> {new_alert_type}</p>
+                <p><b>Location:</b> {new_location}</p>
+                <p><b>Source:</b> {new_source}</p>
+                <p><b>Severity Score:</b> {new_severity}/10</p>
+                <p><b>Risk Level:</b> {new_risk}</p>
+                <p><b>AI Routing Status:</b> Classified, prioritized, and routed to emergency response queue.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
     critical_count = len(df[df["risk_level"] == "Critical"])
     high_count = len(df[df["risk_level"] == "High"])
 
@@ -145,28 +300,33 @@ if selected == "Command Center":
     col2.metric("Critical Incidents", critical_count)
     col3.metric("High Risk Incidents", high_count)
 
-    st.markdown("### Priority Alerts")
+    
 
     critical_df = df[df["risk_level"] == "Critical"]
 
     for _, row in critical_df.iterrows():
 
-        st.markdown(
-            f"""
-            <div class="alert-box">
-            {row['type']} detected in {row['location']}
-            | Severity: {row['severity']}
-            | AI Confidence: {row['ai_confidence']}
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        
+         with st.container(border=True):
 
-        st.write(row["description"])
-        st.write("Recommended Action:", row["recommended_action"])
-        st.divider()
+            col_a, col_b = st.columns([4, 1])
 
+            with col_a:
+                st.markdown(f"### 🚨 {row['type']} — {row['location']}")
+
+            with col_b:
+                st.error(row["risk_level"])
+
+            st.write(f"**Description:** {row['description']}")
+            st.write(f"**Address:** {row['address']}")
+
+            st.write(
+                f"**Severity:** {row['severity']}/10 | "
+                f"**AI Confidence:** {row['ai_confidence']} | "
+                f"**Source:** {row['source']}"
+            )
+
+            st.success(f"Recommended Action: {row['recommended_action']}")
+           
     st.subheader("Incident Feed")
     st.dataframe(df, use_container_width=True)
 
@@ -180,7 +340,7 @@ if selected == "Command Center":
     st.plotly_chart(chart, use_container_width=True)
 
 # INCIDENT MAP
-elif selected == "Incident Map":
+with tab2:
 
     st.subheader("🗺️ Real-Time Incident Map")
 
@@ -207,7 +367,7 @@ elif selected == "Incident Map":
     st.plotly_chart(map_fig, use_container_width=True)
 
 # AI RECOMMENDATIONS
-elif selected == "AI Recommendations":
+with tab3:
 
     st.subheader("🤖 AI Response Recommendations")
 
@@ -226,11 +386,13 @@ elif selected == "AI Recommendations":
                 row["recommended_action"]
             )
 # AI ANALYST ASSISTANT
-elif selected == "AI Analyst Assistant":
+with tab4:
 
     st.subheader("🤖 AI Emergency Analyst Assistant")
 
-    st.write("Ask a question about the current emergency situation.")
+    st.info(
+    "Ask the AI Analyst Assistant about incident priority, cyber threats, response actions, or executive summaries."
+)
 
     user_question = st.text_input(
         "Example: What is the highest risk incident?"
@@ -289,42 +451,96 @@ I can help answer:
 - What action should responders take?
 """)
 # EXECUTIVE SUMMARY
-elif selected == "Executive Summary":
+with tab5:
 
     st.subheader("📋 Executive Emergency Summary")
 
-    summary = f"""
-CrisisShield AI detected {len(df)} active emergency incidents across multiple regions.
+    summary = """
+<h3 style='margin-top:0;'>Operational Overview</h3>
 
-Critical incidents include cyberattacks, wildfire escalation,
-hospital disruption, and earthquake-related infrastructure damage.
+CrisisShield AI detected <b>8 active emergency incidents</b> across multiple regions.
 
-AI analysis indicates elevated operational risk to healthcare systems,
-public safety infrastructure, and emergency response coordination.
+Critical incidents currently include:
+<ul>
+<li>Cyberattacks affecting operational systems</li>
+<li>Wildfire escalation risks</li>
+<li>Hospital infrastructure disruption</li>
+<li>Earthquake-related infrastructure damage</li>
+</ul>
 
-Recommended immediate actions:
-- Activate emergency command center
-- Prioritize critical infrastructure protection
-- Dispatch coordinated field response teams
-- Increase cyber monitoring for healthcare and utility networks
+AI analysis indicates elevated operational risk to:
+<ul>
+<li>Healthcare systems</li>
+<li>Public safety infrastructure</li>
+<li>Emergency response coordination</li>
+</ul>
+
+<h3>Recommended Immediate Actions</h3>
+
+<ul>
+<li>Activate emergency command center</li>
+<li>Prioritize critical infrastructure protection</li>
+<li>Dispatch coordinated field response teams</li>
+<li>Increase cyber monitoring for healthcare and utility networks</li>
+</ul>
 """
-
     st.markdown(
-        f"""
-        <div style="
-            background-color:#1e293b;
-            padding:20px;
-            border-radius:10px;
-            color:white;
-            border:1px solid #334155;
-            white-space: pre-wrap;
-            font-size:16px;
-        ">
-        {summary}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    f"""
+    <div style="
+        background-color:white;
+        padding:28px;
+        border-radius:18px;
+        border:1px solid #e2e8f0;
+        box-shadow:0 8px 24px rgba(15,23,42,0.08);
+        color:#0f172a;
+        font-size:16px;
+        line-height:1.6;
+    ">
+
+    <h3 style="margin-top:0; margin-bottom:12px;">
+    Operational Overview
+    </h3>
+
+    <p style="margin-bottom:14px;">
+    CrisisShield AI detected <b>8 active emergency incidents</b> across multiple regions.
+    </p>
+
+    <p style="margin-bottom:8px;">
+    Critical incidents currently include:
+    </p>
+
+    <ul style="margin-top:0; margin-bottom:14px; padding-left:22px;">
+        <li style="margin-bottom:6px;">Cyberattacks affecting operational systems</li>
+        <li style="margin-bottom:6px;">Wildfire escalation risks</li>
+        <li style="margin-bottom:6px;">Hospital infrastructure disruption</li>
+        <li style="margin-bottom:6px;">Earthquake-related infrastructure damage</li>
+    </ul>
+
+    <p style="margin-bottom:8px;">
+    AI analysis indicates elevated operational risk to:
+    </p>
+
+    <ul style="margin-top:0; margin-bottom:14px; padding-left:22px;">
+        <li style="margin-bottom:6px;">Healthcare systems</li>
+        <li style="margin-bottom:6px;">Public safety infrastructure</li>
+        <li style="margin-bottom:6px;">Emergency response coordination</li>
+    </ul>
+
+    <h3 style="margin-top:10px; margin-bottom:8px;">
+    Recommended Immediate Actions
+    </h3>
+
+    <ul style="margin-top:0; margin-bottom:0; padding-left:22px;">
+        <li style="margin-bottom:6px;">Activate emergency command center</li>
+        <li style="margin-bottom:6px;">Prioritize critical infrastructure protection</li>
+        <li style="margin-bottom:6px;">Dispatch coordinated field response teams</li>
+        <li>Increase cyber monitoring for healthcare and utility networks</li>
+    </ul>
+
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
     st.write("""
 CrisisShield AI analyzes emergency, cyber, infrastructure,
@@ -356,4 +572,9 @@ during fast-moving crisis situations.
     st.plotly_chart(pie, use_container_width=True)
 
 st.markdown("---")
-st.caption("CrisisShield AI | IEEE Response Quest Challenge Prototype")
+st.markdown("""
+---
+### CrisisShield AI
+**Developed by Shaikh Irfan | Cybersecurity Researcher | IEEE Member**  
+Built for emergency intelligence, disaster response, cyber incident coordination, and critical infrastructure protection.
+""")
