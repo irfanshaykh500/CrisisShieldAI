@@ -25,125 +25,107 @@ st.markdown("""
 <style>
 
 .stApp {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 45%, #f1f5f9 100%);
-    color: #0f172a;
+    background: linear-gradient(135deg, #07111f 0%, #0f172a 50%, #111827 100%);
+    color: #e5e7eb;
 }
 
 html, body, [class*="css"] {
-    color: #0f172a !important;
+    color: #e5e7eb !important;
 }
 
 h1 {
-    color: #0f172a !important;
+    color: #ffffff !important;
     font-size: 46px !important;
-    font-weight: 800 !important;
+    font-weight: 900 !important;
 }
 
-h2, h3, h4, h5, h6 {
-    color: #1e293b !important;
-    font-weight: 700 !important;
+h2, h3, h4 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
 }
 
 p, label, div, span {
-    color: #0f172a !important;
+    color: #e5e7eb !important;
 }
 
 [data-testid="stMetric"] {
-    background: white;
-    padding: 18px;
-    border-radius: 16px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    background: linear-gradient(135deg, #111827, #1e293b);
+    padding: 22px;
+    border-radius: 18px;
+    border: 1px solid #334155;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
 [data-testid="stMetricValue"] {
-    color: #0f172a !important;
-    font-size: 30px !important;
-    font-weight: 800 !important;
+    color: #ffffff !important;
+    font-size: 32px !important;
+    font-weight: 900 !important;
 }
 
 [data-testid="stMetricLabel"] {
-    color: #475569 !important;
-    font-weight: 600 !important;
-}
-
-.alert-box {
-    background: linear-gradient(135deg, #991b1b, #dc2626);
-    padding: 18px;
-    border-radius: 14px;
-    color: white !important;
-    font-weight: 700;
-    box-shadow: 0 8px 24px rgba(153, 27, 27, 0.25);
-}
-
-.alert-box div, .alert-box span, .alert-box p {
-    color: white !important;
+    color: #93c5fd !important;
+    font-weight: 700 !important;
 }
 
 [data-testid="stDataFrame"] {
-    background: white;
-    border-radius: 14px;
-    padding: 8px;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+    background: #111827;
+    border-radius: 16px;
+    padding: 10px;
+    border: 1px solid #334155;
 }
 
 .stButton button {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    background: linear-gradient(135deg, #dc2626, #ef4444);
     color: white !important;
     border-radius: 12px;
-    padding: 12px 22px;
+    padding: 12px 24px;
     border: none;
-    font-weight: 700;
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+    font-weight: 800;
+    box-shadow: 0 8px 25px rgba(239,68,68,0.35);
 }
 
 .stButton button:hover {
-    background: linear-gradient(135deg, #1d4ed8, #1e40af);
-    color: white !important;
+    background: linear-gradient(135deg, #b91c1c, #dc2626);
 }
 
 [data-testid="stExpander"] {
-    background: white;
-    border-radius: 14px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+    background: #111827;
+    border-radius: 16px;
+    border: 1px solid #334155;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 12px;
+    background: #0f172a;
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid #334155;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: #1e293b;
+    color: #e5e7eb;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-weight: 700;
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #dc2626, #ef4444) !important;
+    color: white !important;
+}
+
+.stTextInput input {
+    background-color: #111827 !important;
+    color: white !important;
+    border: 1px solid #334155 !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
 }
 
 hr {
-    border-color: #cbd5e1;
-}
-    /* Text Input Styling */
-
-.stTextInput input {
-    background-color: white !important;
-    color: #0f172a !important;
-    border: 2px solid #cbd5e1 !important;
-    border-radius: 12px !important;
-    padding: 12px !important;
-    font-size: 16px !important;
-}
-
-.stTextInput input:focus {
-    border-color: #2563eb !important;
-    box-shadow: 0 0 0 2px rgba(37,99,235,0.2) !important;
-}
-
-/* Option Menu Container */
-
-/* Navigation Menu Cleanup */
-
-ul {
-    background: transparent !important;
-}
-
-.nav-link {
-    border-radius: 12px !important;
-}
-
-section[data-testid="stSidebar"] {
-    display: none;
-}
-
+    border-color: #334155;
 }
 
 </style>
@@ -190,8 +172,13 @@ df["ai_confidence"] = df["severity"].apply(confidence_score)
 df["recommended_action"] = df.apply(recommend_action, axis=1)
 
 # Header
-st.title("🚨 CrisisShield AI")
-st.caption("AI-Powered Emergency Intelligence Platform")
+st.markdown("""
+# 🛡️ CrisisShield AI
+### Emergency Command Intelligence Platform  
+**Developed by Shaikh Irfan | Cybersecurity Researcher | IEEE Member**
+
+AI-powered disaster response, cyber incident coordination, infrastructure protection, and emergency intelligence.
+""")
 
 # Navigation Menu
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
@@ -210,15 +197,17 @@ Monitor emergency events, cyber disruptions, infrastructure risks, and public sa
 """)
     st.markdown("""
     <div style="
-        background:white;
+        background:linear-gradient(135deg, #111827, #1e293b);
         padding:24px;
         border-radius:18px;
-        border:1px solid #e2e8f0;
-        box-shadow:0 8px 24px rgba(15,23,42,0.08);
+        border:1px solid #334155;
+        box-shadow:0 10px 30px rgba(0,0,0,0.35);
         margin-bottom:20px;
     ">
-        <h3 style="margin-top:0;">⚡ Live Emergency Alert Simulator</h3>
-        <p style="color:#475569; margin-bottom:16px;">
+        <h3 style="margin-top:0; color:#ffffff;">
+        ⚡ Live Emergency Alert Simulator
+        </h3>
+        <p style="color:#cbd5e1; margin-bottom:0;">
         Generate a simulated emergency alert to test AI triage, classification, and response routing.
         </p>
     </div>
@@ -314,7 +303,23 @@ Monitor emergency events, cyber disruptions, infrastructure risks, and public sa
                 st.markdown(f"### 🚨 {row['type']} — {row['location']}")
 
             with col_b:
-                st.error(row["risk_level"])
+                st.markdown(
+    f"""
+    <div style="
+        background:linear-gradient(135deg,#7f1d1d,#991b1b);
+        color:white;
+        padding:10px 18px;
+        border-radius:12px;
+        text-align:center;
+        font-weight:700;
+        width:120px;
+        margin-left:auto;
+    ">
+    {row['risk_level']}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
             st.write(f"**Description:** {row['description']}")
             st.write(f"**Address:** {row['address']}")
@@ -325,7 +330,23 @@ Monitor emergency events, cyber disruptions, infrastructure risks, and public sa
                 f"**Source:** {row['source']}"
             )
 
-            st.success(f"Recommended Action: {row['recommended_action']}")
+            st.markdown(
+    f"""
+    <div style="
+        background:linear-gradient(135deg,#0f766e,#115e59);
+        color:#ecfeff;
+        padding:14px 18px;
+        border-radius:14px;
+        border-left:4px solid #14b8a6;
+        margin-top:12px;
+        font-weight:500;
+    ">
+    <b>Recommended Action:</b><br>
+    {row['recommended_action']}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
            
     st.subheader("Incident Feed")
     st.dataframe(df, use_container_width=True)
@@ -487,7 +508,7 @@ AI analysis indicates elevated operational risk to:
     st.markdown(
     f"""
     <div style="
-        background-color:white;
+        background:linear-gradient(135deg, #111827, #1e293b);
         padding:28px;
         border-radius:18px;
         border:1px solid #e2e8f0;
