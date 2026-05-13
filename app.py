@@ -103,7 +103,30 @@ p, label, div, span {
 hr {
     border-color: #334155;
 }
+div[data-baseweb="select"] > div {
+    background-color: #111827 !important;
+    color: white !important;
+    border: 1px solid #334155 !important;
+    border-radius: 12px !important;
+}
 
+div[data-baseweb="select"] span {
+    color: white !important;
+}
+
+ul {
+    background-color: #111827 !important;
+    color: white !important;
+}
+
+li {
+    background-color: #111827 !important;
+    color: white !important;
+}
+
+li:hover {
+    background-color: #1e293b !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -422,6 +445,7 @@ with tab1:
                     """,
                     unsafe_allow_html=True
                 )
+                st.markdown("<br>", unsafe_allow_html=True)
 
             st.write(f"**Description:** {row['description']}")
             st.write(f"**Address:** {row['address']}")
@@ -452,7 +476,18 @@ with tab1:
 
     st.markdown("## 📌 Incident Feed")
 
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(
+    df[
+        [
+            "type",
+            "location",
+            "severity",
+            "risk_level",
+            "source"
+        ]
+    ],
+    use_container_width=True
+)
 
 
 # INCIDENT MAP
