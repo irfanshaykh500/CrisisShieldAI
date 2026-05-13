@@ -1,9 +1,9 @@
 incident_id,type,location,address,latitude,longitude,severity,description,source
-1,Fire,Atlanta,,33.749,-84.388,9,Large warehouse fire near industrial zone,911
-2,Flood,Miami,,25.7617,-80.1918,8,Heavy flooding affecting roads and homes,Weather
-3,Cyberattack,New York,,40.7128,-74.006,10,Ransomware attack detected in hospital network,SOC
-4,Power Outage,Dallas,,32.7767,-96.797,7,Grid failure impacting downtown area,Utility
-5,Misinformation,Los Angeles,,34.0522,-118.2437,5,Fake evacuation alert spreading online,Social Media
-6,Hospital Disruption,Chicago,,41.8781,-87.6298,9,Emergency systems unavailable after malware incident,SOC
-7,Wildfire,Los Angeles,,34.0522,-118.2437,10,Wildfire spreading toward residential areas,Satellite
-8,Earthquake,San Francisco,,37.7749,-122.4194,9,Major earthquake reported with infrastructure damage,USGS
+1,Fire,Atlanta,245 Peachtree St NE Atlanta GA,33.749,-84.388,9,Large warehouse fire near industrial zone,911
+2,Flood,Miami,100 Biscayne Blvd Miami FL,25.7617,-80.1918,8,Heavy flooding affecting roads and homes,Weather
+3,Cyberattack,New York,550 Madison Ave New York NY,40.7128,-74.006,10,Ransomware attack detected in hospital network,SOC
+4,Power Outage,Dallas,2200 Ross Ave Dallas TX,32.7767,-96.797,7,Grid failure impacting downtown area,Utility
+5,Misinformation,Los Angeles,6801 Hollywood Blvd Los Angeles CA,34.0522,-118.2437,5,Fake evacuation alert spreading online,Social Media
+6,Hospital Disruption,Chicago,1200 S Michigan Ave Chicago IL,41.8781,-87.6298,9,Emergency systems unavailable after malware incident,SOC
+7,Wildfire,Los Angeles,6801 Hollywood Blvd Los Angeles CA,34.0522,-118.2437,10,Wildfire spreading toward residential areas,Satellite
+8,Earthquake,San Francisco,1 Market St San Francisco CA,37.7749,-122.4194,9,Major earthquake reported with infrastructure damage,USGS
