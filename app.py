@@ -10,6 +10,24 @@ st.set_page_config(
     layout="wide"
 )
 
+# -------- CrisisShieldAI Access Protection --------
+
+APP_PASSWORD = "CrisisShieldAI@2026#Secure!"
+
+password = st.text_input(
+    "🔒 Enter CrisisShieldAI Access Password",
+    type="password"
+)
+
+if not password:
+    st.stop()
+
+if password != APP_PASSWORD:
+    st.warning("Access restricted. Incorrect password.")
+    st.stop()
+
+# -------- End Protection --------
+
 try:
     APP_PASSWORD = st.secrets["APP_PASSWORD"]
 except:
