@@ -4,14 +4,11 @@ import plotly.express as px
 import random
 from datetime import datetime
 
-# Page Config MUST be first Streamlit command
 st.set_page_config(
     page_title="CrisisShield AI",
     page_icon="🛡️",
     layout="wide"
 )
-
-# -------- CrisisShieldAI Access Protection --------
 
 try:
     APP_PASSWORD = st.secrets["APP_PASSWORD"]
@@ -30,9 +27,7 @@ if not password:
 if password != APP_PASSWORD:
     st.warning("Access restricted. Incorrect password.")
     st.stop()
-
 # -------- End Protection --------
-from datetime import datetime
 
 # =========================
 # CrisisShield AI Functions
