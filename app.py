@@ -4,27 +4,48 @@ import plotly.express as px
 import random
 from datetime import datetime
 
+# =========================
+# Page Config
+# =========================
+
 st.set_page_config(
     page_title="CrisisShield AI",
     page_icon="🛡️",
     layout="wide"
 )
 
-# -------- CrisisShieldAI Access Protection --------
+# =========================
+# CrisisShieldAI Access Protection
+# =========================
 
 APP_PASSWORD = "CrisisShieldAI@2026#Secure!"
 
-password = st.text_input(
-    "🔒 Enter CrisisShieldAI Access Password",
-    type="password"
-)
+# Store login state so user doesn't need to re-enter password every refresh
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
 
-if not password:
+# Show login screen only if not authenticated
+if not st.session_state.authenticated:
+
+    st.markdown("## 🔒 CrisisShieldAI Secure Access")
+
+    password = st.text_input(
+        "Enter access password",
+        type="password"
+    )
+
+    if st.button("Login"):
+        if password == APP_PASSWORD:
+            st.session_state.authenticated = True
+            st.rerun()
+        else:
+            st.error("Incorrect password")
+
     st.stop()
 
-if password != APP_PASSWORD:
-    st.warning("Access restricted. Incorrect password.")
-    st.stop()
+# =========================
+# Continue rest of app below
+# =========================
 
 # -------- End Protection --------
 
