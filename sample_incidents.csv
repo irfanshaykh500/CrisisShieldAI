@@ -1,4 +1,4 @@
-incident_id	type	location	address	latitude	longitude	severity	description	source
+0 incident_id	type	location	address	latitude	longitude	severity	description	source
 1	Fire	Atlanta	245 Peachtree St NE Atlanta GA	33.749	-84.388	9	Large warehouse fire near industrial zone	911
 2	Flood	Miami	100 Biscayne Blvd Miami FL	25.7617	-80.1918	8	Heavy flooding affecting roads and homes	Weather
 3	Cyberattack	New York	550 Madison Ave New York NY	40.7128	-74.006	10	Ransomware attack detected in hospital network	SOC
