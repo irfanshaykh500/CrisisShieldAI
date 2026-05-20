@@ -2,6 +2,20 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import random
+# -------- CrisisShieldAI Access Protection --------
+
+APP_PASSWORD = st.secrets["APP_PASSWORD"]
+
+password = st.text_input(
+    "🔒 Enter CrisisShieldAI Access Password",
+    type="password"
+)
+
+if password != APP_PASSWORD:
+    st.warning("Access restricted. Please enter the correct password.")
+    st.stop()
+
+# -------- End Protection --------
 from datetime import datetime
 
 # =========================
