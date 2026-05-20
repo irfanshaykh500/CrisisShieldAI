@@ -28,25 +28,6 @@ if password != APP_PASSWORD:
 
 # -------- End Protection --------
 
-try:
-    APP_PASSWORD = st.secrets["APP_PASSWORD"]
-except:
-    st.error("Password configuration missing in Streamlit Secrets.")
-    st.stop()
-
-password = st.text_input(
-    "🔒 Enter CrisisShieldAI Access Password",
-    type="password"
-)
-
-if not password:
-    st.stop()
-
-if password != APP_PASSWORD:
-    st.warning("Access restricted. Incorrect password.")
-    st.stop()
-# -------- End Protection --------
-
 # =========================
 # CrisisShield AI Functions
 # =========================
