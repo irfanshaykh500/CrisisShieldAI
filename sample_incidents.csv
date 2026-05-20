@@ -7,3 +7,7 @@ incident_id,type,location,address,latitude,longitude,severity,description,source
 6,Hospital Disruption,Chicago,1200 S Michigan Ave Chicago IL,41.8781,-87.6298,9,Emergency systems unavailable after malware incident,SOC
 7,Wildfire,Los Angeles,6801 Hollywood Blvd Los Angeles CA,34.0522,-118.2437,10,Wildfire spreading toward residential areas,Satellite
 8,Earthquake,San Francisco,1 Market St San Francisco CA,37.7749,-122.4194,9,Major earthquake reported with infrastructure damage,USGS
+9,Phishing,Atlanta,1201 Peachtree St Atlanta GA,33.786,-84.383,7,Multiple employees received credential harvesting emails,Email Gateway
+10,DDoS,Seattle,410 Terry Ave Seattle WA,47.6062,-122.3321,8,Abnormal traffic spike affecting public web services,Network Monitor
+11,Malware,Austin,11501 Burnet Rd Austin TX,30.2672,-97.7431,8,Suspicious executable detected across finance endpoints,EDR
+12,Data Breach,Boston,1 Federal St Boston MA,42.3601,-71.0589,10,Large customer data export activity detected,DLP
